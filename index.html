@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>竹野翔一 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>竹野翔一 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社リブ・コンサルティング</a>
+  <a href="#k2">2. CBcloud株式会社（シービークラウド）</a>
+  <a href="#k3">3. キャディ株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">経営コンサルタント（オープンポジション）</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">株式会社リブ・コンサルティング</div>
+  <div class="co-url"><a href="https://www.libcon.co.jp/" target="_blank">https://www.libcon.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都中央区日本橋二丁目7番1号 東京日本橋タワー29階</td></tr><tr><th>上場区分</th><td>東証グロース（2025年12月25日新規上場）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>★社長リレーション</li><li>★過去複数名入社実績アリ</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">『100年後の世界を良くする会社を増やす』というミッションを掲げ、スタートアップやベンチャー、ユニコーン企業など、世の中に新しいイノベーションを起こす企業や、地域経済や地方創生に貢献する企業を対象とした総合コンサルティングファームです。創業以来、中堅・ベンチャー企業を中心とした『クライアントの事業成長にコミットしたコンサルティング』は大手企業の新規事業コンサルティングにも領域を広げ価値を発揮しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>『100年後の世界を良くする会社を増やす』というミッションを掲げ、スタートアップやベンチャー、ユニコーン企業など、世の中に新しいイノベーションを起こす企業や、地域経済や地方創生に貢献する企業を対象とした総合コンサルティングファームです。創業以来、中堅・ベンチャー企業を中心とした『クライアントの事業成長にコミットしたコンサルティング』は大手企業の新規事業コンサルティングにも領域を広げ価値を発揮しています。</p><p>戦略を描くだけでなく、経営の意思決定に入り込みながら現場に直接働きかけて実行支援をするスタイルが特徴で、企業変革にダイレクトに関わることができます。現在もすべての意思決定の軸にこの理念が置かれており、単なる利益追求でなく、未来に価値を残す企業を支援することを使命としています。</p><p>2025年12月に東京証券取引所グロース市場へ新規上場。創業以来、累計で1万件を超える支援プロジェクト実績を持ち、売上構成は中堅中小企業42%、大企業34%、ベンチャー24％と多様な層からの依頼があります。これまで売上は右肩上がりで推移し、成長軌道を描いています。また、タイにコンサルティング子会社も持ち、グローバルにも支援を展開しています。</p><p><strong>【グループ体制】</strong><br>国内外6社で構成されるコンサルティンググループとして、経営戦略、営業支援、DX推進、ベンチャー投資など幅広い領域を展開しています。</p><ul><li>株式会社Flow Group（フリーコンサル人材事業）</li><li>株式会社Goofy（Salesforce支援）</li><li>株式会社プルーセル（営業代行）</li><li>株式会社Impact Venture Capital（投資）</li><li>LiB Consulting(Thailand) Co., Ltd.（タイ拠点）</li></ul><p><strong>【特徴・強み】</strong></p><ul><li>① 顧客層の幅広さ（ベンチャー～大企業）：売上構成はベンチャー24%、中堅・中小企業42%、大企業34%。地方含め全国展開。1万件超の支援実績（2025年10月末時点）</li><li>② 徹底した『現場主義』のハンズオン支援：戦略提案にとどまらず、実行支援まで一貫して関与。営業同行や研修実施など、現場に入り込む支援スタイル</li><li>③ ベンチャー／中小・大企業の相乗支援モデル：各企業規模で培ったノウハウを横断的に活用。クロスポイントでの価値創出により差別化を実現</li><li>④ 戦略～実行までを支えるグループ連携：グループ内の専門会社がマーケ・システム・営業まで分業連携。例：戦略→GoofyがDX実装→プルーセルが営業実行</li><li>⑤ AI・テクノロジーの積極活用：生成AIによるコンサルナレッジの活用、業務の自動化。Preferred Networks社との共同事業も展開</li><li>⑥ ノウハウのSaaS展開（アンバサダークラウド）：コンサル知見をSaaSで提供、より広範囲・低価格での価値提供を実現。2024年末時点で173社・6万人が利用</li><li>⑦ 海外展開の強化：タイ子会社での事業展開や、韓国コンサル企業との提携によりアジア進出を推進。日本⇄海外のナレッジ連携による付加価値を提供</li><li>⑧ M&A後の成長支援に強み：子会社化後の成長実績多数（Goofy、Flow Groupなど）。バリューアップを前提とした買収戦略を展開</li></ul><p><strong>【代表取締役　関 厳（せき いわお）氏】</strong><br>1979年愛知県出身。国際公認経営コンサルティング協議会認定のマスター・マネジメント・コンサルタント。東京大学を卒業後、2002年に大手経営コンサルティング（インタープライズ・コンサルティング（旧日本エル・シー・エー））に入社し、住宅・不動産、自動車、電機メーカー、卸売など幅広い業界のコンサルティング業務に従事。その後、ボードメンバーとしてコンサルティング部門を統括し、2012年に『「100年後の世界を良くする会社」を増やす』を理念としてリブ・コンサルティングを設立。</p><p><strong>【その他特記事項】</strong></p><ul><li>2025年12月25日に東京証券取引所グロース市場への新規上場！</li><li>毎月のプロジェクト・ナレッジ共有会</li><li>複線的キャリアパスを支える人事評価制度</li><li>経営理念の実現に向けた全社員プロジェクト</li><li>半期ごとに全部門共通で全社表彰を実施</li><li>『働きがいのある会社』ランキング『働きがい認定企業』10年連続受賞</li><li>ベストモチベーションカンパニーアワード4年連続受賞</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 ー未経験可ー【経営コンサルタント（オープンポジション）】戦略立案～実行支援を担う変革パートナー</div>
+          <div class="job-preview">スタートアップ・中小中堅・エンタープライズいずれかの部門に配属され、経営戦略から現場実行支援まで一貫して担う経営コンサルタントを募集。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【募集背景】</strong><br>リブ・コンサルティングは、スタートアップ、中小・中堅、エンタープライズの3つの事業ドメインにコンサルティングサービスを提供する、国内唯一のビジネスモデルを展開するコンサルファームです。3つのドメインのクライアントへ価値提供を行うことでそれぞれのクライアント層へ新たな価値を生み出すシナジー効果を創出しています。</p><p>当社は、戦略の立案を行うだけでなく、仮説検証活動や初期マーケットの探索活動を担う等、現場に深く入り込み『結果の出る成果創出型コンサルティング』を強みとして成長を続けてきました。クライアントである経営者と共に100年後の世界にもインパクトを残す事業成長を目指しており、ビジョンや想いに共感いただける仲間を増やし、今後の当社の事業をより成長、発展させていきたいと考えています。</p><p><strong>【仕事内容】</strong><br>スタートアップ、中小・中堅、エンタープライズ、いずれかの部門での配属となります。企業や社会の変革にこだわり、経営と現場に直接働きかけるコンサルティングを行います。</p><p><strong>■コンサルティング領域</strong></p><ul><li>経営戦略</li><li>新規事業開発</li><li>マーケティング・セールス</li><li>組織人事</li><li>デジタル、テクノロジー など多岐に渡ります</li></ul><p>社会課題となっている、サステナビリティ/地方創生/エネルギー自給自足といったテーマに関連するプロジェクトが多いのも特徴です。</p><p><strong>【当社で働く魅力】</strong></p><ul><li>① 手触り感のある支援ができる：当社の支援は戦略立案や機能の提供のみにとどまらず、企画〜実行支援まで関与します。成果主義×現場主義により、クライアントに確実に成果を届け、中長期的な企業の進化・発展までをリードします。自分の仕事がクライアントや消費者、社会にインパクトを与えていることを実感できます。</li><li>② 未経験から活躍できる環境がある：入社後は一人前のコンサルタントになるまで専属のトレーナーがつき、週次の1on1で徹底した振り返りを行う機会が設けられています。成果を確実に届ける専門性の獲得や、経営リテラシーを向上するための多角的な研修プログラムだけでなく、個別に丁寧なFBを受けられる環境で成長角度を高めることができます。</li><li>③ 経営・CxO人材に必要なスキルを獲得できる：当社の支援では、常に自分が最終責任者であるという意識を持ち矢面に立って仕事をすることが求められます。論点仮説思考やロジカルシンキングはもちろんですが、自身の意見や覚悟を問われる場面が多くあります。シビアな環境だからこそスキルが磨かれます。</li><li>④ 事業づくりを体感できる：当社では1つの事業部が1つの会社のような位置付けになっており、『自分たちの事業を経営する』というマインドを持ったコンサルタントが集まっています。少数精鋭のチームだからこそ『自ら売上を作り、組織へ貢献している』という実感を得ることができます。</li></ul><p><strong>【キャリアパス】</strong></p><ul><li>【入社後～2年目】経営コンサルタントとしての習熟度を高め、プロジェクトリーダーを担う</li><li>【3年目以降】経営コンサルタントとしての価値発揮に加え、個々人の得意領域やキャリア観に応じた複線型のキャリアパスとなっています。<ul><li>■マネジメント型：3年目でマネージャーになり事業創りと組織創りをリードしたのちに、5年目以降はパートナーとして経営陣と共に会社の成長と発展を牽引</li><li>■専門型：各インダストリーやソリューションにおけるスペシャリストとして専門性を磨き続けることで、顧客価値や会社のプレゼンス向上に貢献</li><li>■マーケティングセールス型：クライアントの経営課題を把握し、新たな案件の獲得をすることで、事業の拡大に貢献</li><li>■事業企画型：グループ会社を含めた新規事業の立ち上げから収益化までの一連のプロセスを主導し、事業成果の拡大に貢献</li></ul></li></ul><p><strong>【応募資格】</strong></p><p>■下記いずれかに該当する方</p><ul><li><span class='tag tag-must'>MUST</span> 営業職やコンサルタント職など顧客の成果にコミットした経験のある方</li><li><span class='tag tag-must'>MUST</span> 企画職（経営企画、事業企画、事業開発、マーケ・商品企画、営業企画など）の経験のある方</li><li><span class='tag tag-must'>MUST</span> プロジェクトマネジメント経験のある方</li></ul><p>■ベース要件</p><ul><li><span class='tag tag-must'>MUST</span> 大卒以上の方</li><li><span class='tag tag-must'>MUST</span> 社会人経験が2年以上ある方</li></ul><p>■歓迎要件</p><ul><li><span class='tag tag-want'>WANT</span> 『100年後の世界を良くする会社を増やす』という当社のミッションに共感いただける方</li><li><span class='tag tag-want'>WANT</span> 商材や事業ドメインに囚われず、顧客の本質的な課題解決を行えるような仕事に就きたいと考える顧客志向の強い方</li><li><span class='tag tag-want'>WANT</span> ご自身のスキルアップや市場価値の向上だけでなく、仕事を自己実現の手段として、社会にインパクトを起こすビジネスの創造や社会課題の解決に取り組みたいと考えている方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.libcon.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">オープンポジション</span><span class="badge badge-blue">未上場（N-2）</span></div>
+  <div class="co-name">CBcloud株式会社（シービークラウド）</div>
+  <div class="co-url"><a href="https://cb-cloud.com/" target="_blank">https://cb-cloud.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都千代田区神田練須田町1-23-1 住友不動産神田ビル2号館9階</td></tr><tr><th>上場区分</th><td>未上場（N-2、2年後のIPOを目指す）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">『届けてくれるにもっと価値を』をビジョンに掲げ、運送業界の構造改革およびラストワンマイルを担うドライバーの労働環境の改善等、業界が抱える各種課題を解決すべく、ITの活用による自動化・効率化を促進している物流のTechカンパニーです。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>『届けてくれるにもっと価値を』をビジョンに掲げ、運送業界の構造改革およびラストワンマイルを担うドライバーの労働環境の改善等、業界が抱える各種課題を解決すべく、ITの活用による自動化・効率化を促進している物流のTechカンパニーです。配送業務そのものの付加価値を適正に、そして現場のドライバーの社会的地位を上げることを目指しています。</p><p>2013年の設立以来、ドライバー（一般貨物自動車運送事業者）と荷主を24時間365日即時につなぐ配送プラットフォーム「PickGo（ピックゴー）」や、物流の現場を支援するDXシステム「SmaRyu（スマリュー）」の提供を通し、配送パートナーの価値が正当に評価される仕組みづくりと配送現場の生産性改善に取り組んでいます。</p><p>「PickGo」は2016年のサービス開始以来、配送パートナーの登録数が右肩上がりに増加を続け、全国に7万人以上（軽貨物5万人・二輪2万人）、一般貨物運送会社パートナー2,000社以上（自社調べ、2023年4月時点）が登録する、国内最大級の配送プラットフォームとなっています。</p><p>2025年6月には宅配事業を展開する「株式会社エコ配」を完全子会社化し、従来のプラットフォームサービスに加え、都市型・低コスト宅配ネットワークを持つ事業基盤が統合され、配送能力・サービス力がさらに強化されています。</p><p>※『ガイアの夜明け』など様々なメディアでも取り上げられるなど高い注目を集めています。2019年には佐川急便と資本・業務提携契約を締結。2021年12月に第三者割当増資（シリーズCラウンド）及び大手金融機関からの追加融資枠設定により、総額約60億円の資金を調達。現在はシリーズEに入り累計100億円を超え、2年後のIPOを目指しています。</p><p><strong>【代表取締役CEO　松本 隆一氏】</strong><br>1988年生まれ、沖縄県出身。高校時代に独学でプログラミングを習得し、自身が通っていた「東進衛星予備校」の授業配信システムを開発し同校に導入。高校卒業後、航空保安大学校を経て国土交通省に入省、航空監査官として羽田空港で勤務するが、その後、運送業をしていた義父と出会い、エンジニアとして、配送マッチングシステムを開発する。2013年に退省、他界した義父の運送業を継ぎ、配送ドライバーを経験する。その中で、物流業界の多重構造やアナログで非効率な業務に課題感を持ち、ITによる業界変革を決意。同年CBcloud株式会社を設立。ドライバーの価値が評価される世界を目指しています。</p><p><strong>【提供プロダクト】</strong></p><ul><li><strong>ピックゴー：</strong>荷主と配送パートナーを直接つなげる国内最大級の配送プラットフォームです。軽貨物5万人、二輪2万人、一般貨物2,000社の配送パートナーが登録しており、24時間365日・全国どこでもWEBで簡単に車両の手配をすることが可能です。配車時間は最短56秒、配車率は99.2%を実現しています。</li><li><strong>スマリューエンタープライズ：</strong>これまで10年物流業界に挑戦してきたノウハウとIT知見を活かし、物流特化型のコンサルティングサービスの提供を2023年10月から開始しました。すでに複数のエンタープライズとの案件を担っており、チームを拡大しながら、案件数を増やし、物流システム＝CBcloudの世界観を目指していきたいと考えています。</li><li><strong>宅配事業：</strong>2023年から宅配事業へ参入。2024年にはエコ配と資本業務提携契約を締結。CBcloudのチャーター配送やクイックコマース等の即配サービスと、エコ配の宅配サービスを高次元で融合し、ドライバーに対して様々な配送業務に従事する機会をワンストップで提供することで通常の配送インフラでは対応が困難な配送ニーズの対応や、配送に留まらない付加価値の提供を目指しています。</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 オープンポジション</div>
+          <div class="job-preview">ミッション・ビジョンに共感した方を対象に、経験とキャリアビジョン・適性に応じて選考ポジションをご提案するオープンポジション募集。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【仕事内容】</strong><br>弊社のミッション・ビジョンそのものに興味を持っていただいた方とまずはお会いした上でご経験とキャリアビジョン、適性に応じて選考ポジションをお話させていただくオープンポジションでの求人です。ポジションに迷われたら、バックグラウンドやご意向に合わせて、ご経験を活かせそうなポジションを提案しますので是非ご応募下さい！</p><p><strong>【ターゲットとする市場について】</strong><br>物流とは、日々の生活を支える社会インフラでありダイナミックな市場です。どのような業種の企業であれ、なんらか物を運び事業経営しています。例えば、メーカーの製品製造にあたっての原材料の調達、小売店の店頭への商品の供給やエンドユーザーに届くまで、すべて「物流（のドライバー）」があり成りたっています。そういった点からも、「物流」は経済と日々の生活を支える社会基盤＝インフラだと言えます。</p><p><strong>【解決したい業界課題】</strong><br>物流業界の市場規模は16兆円です。その実態はヤマト運輸や佐川急便等の大手企業だけではなく、全国6万社と言われる中小企業や21万人の個人事業主（フリーランスドライバー）によって支えられています。一方で、物流業界は課題が多く、「2027年には24万人のドライバーが不足する」と言われており、「運べない危機」により既存インフラが持続的に支えられない状況に陥っています。</p><p><strong>【CBcloudが目指す世界】</strong><br>CBcloudは、『届けてくれるにもっと価値を』をビジョンに掲げ、物流業界にはびこる構造的な課題にITの力でメスを入れ、より合理的・効率的な物流を実現するとともに配送業務そのものの付加価値を上げ、現場のドライバーの社会的地位を上げる（Empowerする）ことを目指しています。同時に、様々なプレーヤーとのパートナーシップを通じて、ECの時代にふさわしい持続的な物流を世の中に実装していきたいと考えています。</p><p>2013年の設立以来、軽貨物ドライバーおよび一般貨物自動車運送事業者と荷主を即時につなぐプラットフォーム「ピックゴー」や物流効率化システム「スマリュー」など、アナログと言われる運送業界に独自のITソリューションを提供しています。運送業界の構造改革およびラストワンマイルを担うドライバーの労働環境の改善をはじめとした業界が抱える各種課題を解決すべく、ITの活用による自動化・効率化を促進しています。当社はテクノロジーの力で配送現場をエンパワーするとともに、拡張性と柔軟性を兼ね備えた物流インフラを世の中に実装していきたいと考えています。</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span><span class="pill">⚠️ 副業：条件によって可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://cb-cloud.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">オープンポジション（Bizdev）</span><span class="badge badge-blue">未上場（N-4以前）</span></div>
+  <div class="co-name">キャディ株式会社</div>
+  <div class="co-url"><a href="https://caddi.com/ja-jp/company/" target="_blank">https://caddi.com/ja-jp/company/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都台東区浅草橋4-2-2 D'sVARIE浅草橋ビル（総合受付6階）</td></tr><tr><th>設立</th><td>2017年11月</td></tr><tr><th>上場区分</th><td>未上場（N-4以前、IPO準備中）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>★IPO準備中</li><li>★役員リレーション</li><li>★経営陣とのカジュアル面談スタート可</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「モノづくり産業のポテンシャルを解放する」をミッションに、製造業のデジタル変革を推進しています。2018年より製造業の受発注プラットフォームCADDi（現CADDi Manufacturing）をスタート、品質・コスト・納品（QCD）に責任を負い一気通貫の調達支援を提供。そこから得た知見を元に、2022年6月には図面データ活用クラウドCADDi Drawerをリリースし、製造業における重要データの資産化を支援しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2017年11月創業、「モノづくり産業のポテンシャルを解放する」をミッションに、製造業のデジタル変革を推進しています。2018年より製造業の受発注プラットフォームCADDi（現CADDi Manufacturing）をスタート、品質・コスト・納品（QCD）に責任を負い一気通貫の調達支援を提供。そこから得た知見を元に、2022年6月には図面データ活用クラウドCADDi Drawerをリリースし、製造業における重要データの資産化を支援しています。2022年よりグローバル展開も開始し、ベトナム・タイ・アメリカを含む世界4カ国で現在事業を展開しています。</p><p>CADDi Drawerは、現在、スズキ、SUBARU、ミネベアミツミ、NSKをはじめとする日本を代表する自動車メーカー・自動車部品メーカー、パナソニックや日立製作所、富士電機といった総合電機メーカー、川崎重工業、住友重機械工業、IHIといった重工業メーカー、ヤンマー、日立建機といった建設機械会社、東京エレクトロン、荏原製作所といった機械メーカーなどなど、日本を代表する多くの大規模メーカーが導入しています。</p><p>2024年7月より、祖業である部品調達支援事業（CADDi Manufacturing）とデータプラットフォーム事業（CADDi Drawer）の2つの事業を統合することを発表。製造業のエンジニアリングチェーン・サプライチェーン上のあらゆるデータを解析・関連付け、インサイトを抽出することで、人間の生産活動をより高度化する「製造業AIデータプラットフォームCADDi」として新たに提供をスタートしました。今後はサプライチェーンデータの資産化を促進するAI見積クラウド CADDi Quoteをはじめ、プラットフォーム上に様々なアプリケーションを提供予定です。累計資金調達額は257.3億円となっています。</p><p>国内外で事業は力強く拡大し、2030年に海外比率5割を目指し、大型IPOに向けた戦略的投資を進めています。事業成長に伴いCSおよびグローバル領域を中心としたマネージャー・責任者クラスの体制強化が重要なテーマとなっています。</p><p><strong>【代表取締役社長　加藤 勇志郎氏】</strong><br>1991年生まれ。東京大学卒業後、外資系コンサルティング会社のマッキンゼー・アンド・カンパニーに入社。2016年に同社マネージャーとして、日本・中国・アメリカ・オランダなどグローバルで、製造業メーカーを多方面から支援するプロジェクトをリード。特に、重工業、大型輸送機器、建設機械、医療機器、消費財を始めとする大手メーカーに対して購買・調達改革をサポートした他、IoT/Industry4.0領域を立ち上げ時から牽引。製造業分野の持つポテンシャルに惹かれ、2017年11月にキャディ株式会社を創業。</p><p><strong>【morichよりコメント】</strong><br>CADDi DRAWERは図面データ活用クラウド。「モノづくり産業のポテンシャルを解放する」というミッションを掲げ、類似図面検索という特許出願済の独自技術を搭載した、競合のいないプロダクトを武器に急成長されています。「類似図面検索」のプロダクトはグローバルでも競合がおらず、テクノロジーの難易度が高い状況です。</p><p>加藤代表は家族帯同でアメリカに転居し、自らアメリカのエンタープライズ企業開拓や採用に携わっています。とてもストイックで製造業への熱い想いをお持ちです。意思決定スピードが早く、時にはドラスティックな判断もしながら事業を急激に成長させています。昨ウォーター対比7倍の成長率で、3ヵ月毎に会社が生まれ変わっているような状況です。CADDi DRAWERのアプリケーションも急増中で、多数のプロダクトと成長率を有する中、共に急成長していく実感が持てる環境です。</p><p>CHRO幸松様いわく「事業成長スピードに組織成長が追い付いていない」のが最大の課題であるが故、入社後の実績次第では早期に役員ポストも狙っていただけます。オフィスは浅草橋駅からすぐの雑居ビルにあり、和気あいあいとしたベンチャー感があります！代表や役員もフリースペースで仕事をするなど、大変フラットな印象で風通しの良さそうな雰囲気です。日本発のバーティカルSaaSスタートアップでグローバル展開している、稀有な企業です！</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 オープンポジション（Bizdev）</div>
+          <div class="job-preview">事業開発・経営企画・オペレーション企画・カスタマーサクセスなどBizdev系職種のオープンポジション。バックグラウンドやご意向に合わせてポジションをご提案。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【仕事内容】</strong><br>Bizdev系の職種のオープンポジションです。バックグラウンドやご意向に合わせて、ご経験を活かせそうなポジションをご提案します。</p><p>例）事業開発/経営企画/オペレーション企画/事業企画/カスタマーサクセス/EnterpriseBizdev/新規事業グロースなど</p><p><strong>【応募資格（必須）】</strong></p><ul><li><span class='tag tag-must'>MUST</span> ビジネスレベルの日本語力</li><li><span class='tag tag-must'>MUST</span> キャディの掲げるミッション、ビジョン、カルチャーに強く共感いただける方（https://caddi.com/ja-jp/company/mission/）</li><li><span class='tag tag-must'>MUST</span> 難しいことを「面白い/楽しい」と捉え、粘り強くアクションができる方</li><li><span class='tag tag-must'>MUST</span> 周囲を巻き込みながら、チームで大きな成果を出すことを志向している方</li></ul><p>かつ、下記いずれかに当てはまる方</p><ul><li><span class='tag tag-must'>MUST</span> 事業企画経験者</li><li><span class='tag tag-must'>MUST</span> 新規事業開発または既存事業グロース経験者</li><li><span class='tag tag-must'>MUST</span> コンサルティングファーム経験者</li><li><span class='tag tag-must'>MUST</span> 経営企画経験者</li></ul><p><strong>【望ましい経験/スキル】</strong></p><ul><li><span class='tag tag-want'>WANT</span> IT、SaaSプロダクト事業に関するご経験</li><li><span class='tag tag-want'>WANT</span> 困難な場面や課題に直面した際にも、積極的かつ前向きに捉えて動ける方</li></ul><p><strong>【こんな方と働きたい】</strong></p><ul><li>キャディのミッション、ビジョン、カルチャーに強く共感いただける方</li><li>社会課題解決への意欲がある方</li><li>仮説構築力、抽象化思考力に長けた方</li><li>素早く検証するフットワークがある方</li></ul><p>キャディでは、大胆・卓越・一丸・至誠という4つの価値観を体現できる人を求めています。応募要件の経験に完全には一致しない場合でも、こういった能力や経験が活かせるんじゃないか、と思われる方は是非ご応募ください。課題に真正面から向き合い、徹底的に考え抜き、チームで一丸となって課題解決に取り組む。そんな組織を当事者として一緒に作っていきたいという方を歓迎します。</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://caddi.com/ja-jp/company/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://speakerdeck.com/caddi_eng/caddi-recruit-202108" target="_blank">📄 会社説明資料</a><a class="lbtn lbtn-out" href="https://www.youtube.com/watch?v=t_kPudq7UW8" target="_blank">🎬 CADDi Drawer Brand Movie</a><a class="lbtn lbtn-out" href="https://caddi.com/careers/" target="_blank">👥 採用サイト</a><a class="lbtn lbtn-out" href="https://caddiinc.com/" target="_blank">📝 社員note</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが竹野翔一 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
